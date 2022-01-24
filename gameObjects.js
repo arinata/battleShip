@@ -25,8 +25,12 @@ const ship = (length) => {
 
 const gameBoard = () => {
     let shipLocation = [];
-    const boardSize = 11;
-    const placeShip = (shipLength,orientation,startCoordinateX,startCoordinateY) => {
+    const boardSize = 10;
+    const getBoardSize = () => {
+        return boardSize;
+    }
+    const placeShip = (shipLength,orientation,startCoordinateX,startCoordinateY,size) => {
+        let boardSize = size + 1;
         if(((startCoordinateX>0)&&(startCoordinateX<boardSize))&&((startCoordinateY>0)&&(startCoordinateY<boardSize))){
             let loc = [];
             if(orientation=="horizontal"){
@@ -75,7 +79,7 @@ const gameBoard = () => {
     const receiveAttack = (loc) => {
         
     }
-    return {placeShip};
+    return {placeShip,getBoardSize};
 }
 
 exports.ship = ship;

@@ -42,20 +42,25 @@ it('Test ship with length of 4 to be hit four times, and should be Sunk', () => 
 
 it('Place one ship on the center of the gameboard', () => {
     let player = gameObjects.gameBoard();
-    expect(player.placeShip(3,'horizontal',5,5)).toBe(true);
+    expect(player.placeShip(3,'horizontal',5,5,player.getBoardSize())).toBe(true);
 })
 
 it('Place one ship on the center of the gameboard', () => {
     let player = gameObjects.gameBoard();
-    expect(player.placeShip(3,'vertical',6,4)).toBe(true);
+    expect(player.placeShip(3,'vertical',6,4,player.getBoardSize())).toBe(true);
 })
 
 it('Place one ship on the far left of the gameboard', () => {
     let player = gameObjects.gameBoard();
-    expect(player.placeShip(3,'horizontal',9,3)).toBe("Board OverRun X");
+    expect(player.placeShip(3,'horizontal',9,3,player.getBoardSize())).toBe("Board OverRun X");
 })
 
 it('Place one ship on the far bottom of the gameboard', () => {
     let player = gameObjects.gameBoard();
-    expect(player.placeShip(3,'vertical',2,10)).toBe("Board OverRun Y");
+    expect(player.placeShip(3,'vertical',2,10,player.getBoardSize())).toBe("Board OverRun Y");
+})
+
+it('Place one ship on top of another ship', () => {
+    let player = gameObjects.gameBoard();
+    player.placeShip(3,'vertical', 5,5,player.getBoardSize());
 })
