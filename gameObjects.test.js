@@ -63,4 +63,5 @@ it('Place one ship on the far bottom of the gameboard', () => {
 it('Place one ship on top of another ship', () => {
     let player = gameObjects.gameBoard();
     player.placeShip(3,'vertical', 5,5,player.getBoardSize());
+    expect(player.placeShip(3,'vertical', 5,5,player.getBoardSize())).toBe("Loc Occupied Vertical [5,5]")
 })

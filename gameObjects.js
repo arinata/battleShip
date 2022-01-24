@@ -39,6 +39,7 @@ const gameBoard = () => {
                 }else{
                     for(let i = 0; i<shipLength; i++){
                         let tempLoc = [startCoordinateX+i, startCoordinateY];
+                        //console.log(locNotOccup(shipLocation,tempLoc));
                         if(locNotOccup(shipLocation,tempLoc)){
                             loc.push(tempLoc);
                         }else{
@@ -52,6 +53,7 @@ const gameBoard = () => {
                 }else{
                     for(let i = 0; i<shipLength; i++){
                         let tempLoc = [startCoordinateX, startCoordinateY+i];
+                        //console.log(locNotOccup(shipLocation,tempLoc));
                         if(locNotOccup(shipLocation,tempLoc)){
                             loc.push(tempLoc);
                         }else{
@@ -68,13 +70,15 @@ const gameBoard = () => {
         }
     }
     const locNotOccup = (shipLocation,loc) =>{
-        shipLocation.forEach(element => {
-            let isOccuppied = element.location.find(checkOcc = (part) => {return part == loc});
-            if(isOccuppied != undefined){
-                return false;
+        for(let i = 0; i<shipLocation.length; i++){
+            for(let j = 0; j<shipLocation[i].location.length; j++){
+                if((shipLocation[i].location[j][0]==loc[0])&&(shipLocation[i].location[j][1]==loc[1])){
+                    return false;
+                }
             }
-        });
+        }
         return true;
+        
     }
     const receiveAttack = (loc) => {
         
