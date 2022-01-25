@@ -1,30 +1,26 @@
 const ship = (length) => {
     let shipLength = length;
-    let partHitted = [];
-    const hit = (hitPart) => {
-        if(partHitted.length==shipLength){
+    let partHitted = 0;
+    const hit = () => {
+        if(partHitted==shipLength){
             return false;
-        }else if((hitPart>0)&&(hitPart<=shipLength)){
-            let isHitted = partHitted.find(checkHit = (part) => {return part == hitPart});
-            if(isHitted == undefined){
-                partHitted.push(hitPart);
-            }else{
-                false;
-            }
+        }else {
+            partHitted++;
+            return true;
         }
     }
     const isSunk = () =>{
-        if((shipLength-partHitted.length)==0){
+        if(shipLength==partHitted){
             return true;
         }else{
             return false;
         }
     }
-    return {hit,isSunk};
+    return {hit,isSunk,partHitted};
 }
 
 const gameBoard = () => {
-    let shipLocation = [];
+    const shipLocation = [];
     const boardSize = 10;
     const missedShot = [];
     const getBoardSize = () => {
@@ -89,7 +85,7 @@ const gameBoard = () => {
             return true;
         }
     }
-    return {placeShip,getBoardSize,receiveAttack};
+    return {placeShip,getBoardSize,receiveAttack,shipLocation};
 }
 
 exports.ship = ship;
