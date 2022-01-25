@@ -26,6 +26,7 @@ const ship = (length) => {
 const gameBoard = () => {
     let shipLocation = [];
     const boardSize = 10;
+    const missedShot = [];
     const getBoardSize = () => {
         return boardSize;
     }
@@ -39,8 +40,7 @@ const gameBoard = () => {
                 }else{
                     for(let i = 0; i<shipLength; i++){
                         let tempLoc = [startCoordinateX+i, startCoordinateY];
-                        //console.log(locNotOccup(shipLocation,tempLoc));
-                        if(locNotOccup(shipLocation,tempLoc)){
+                        if(locNotOccup(shipLocation,tempLoc)==true){
                             loc.push(tempLoc);
                         }else{
                             return "Loc Occupied Horizontal ["+tempLoc+"]";
@@ -53,8 +53,7 @@ const gameBoard = () => {
                 }else{
                     for(let i = 0; i<shipLength; i++){
                         let tempLoc = [startCoordinateX, startCoordinateY+i];
-                        //console.log(locNotOccup(shipLocation,tempLoc));
-                        if(locNotOccup(shipLocation,tempLoc)){
+                        if(locNotOccup(shipLocation,tempLoc)==true){
                             loc.push(tempLoc);
                         }else{
                             return "Loc Occupied Vertical ["+tempLoc+"]";
@@ -73,7 +72,7 @@ const gameBoard = () => {
         for(let i = 0; i<shipLocation.length; i++){
             for(let j = 0; j<shipLocation[i].location.length; j++){
                 if((shipLocation[i].location[j][0]==loc[0])&&(shipLocation[i].location[j][1]==loc[1])){
-                    return false;
+                    return i;
                 }
             }
         }
@@ -81,9 +80,16 @@ const gameBoard = () => {
         
     }
     const receiveAttack = (loc) => {
-        
+        let isHit = locNotOccup(shipLocation,loc);
+        if(isHit==true){
+            missedShot.push(loc);
+            return false;
+        }else{
+            shipLocation[isHit].shipId.hit(loc);
+            return true;
+        }
     }
-    return {placeShip,getBoardSize};
+    return {placeShip,getBoardSize,receiveAttack};
 }
 
 exports.ship = ship;

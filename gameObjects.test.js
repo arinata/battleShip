@@ -60,8 +60,26 @@ it('Place one ship on the far bottom of the gameboard', () => {
     expect(player.placeShip(3,'vertical',2,10,player.getBoardSize())).toBe("Board OverRun Y");
 })
 
-it('Place one ship on top of another ship', () => {
+it('Place one ship on top of another ship vertically', () => {
     let player = gameObjects.gameBoard();
     player.placeShip(3,'vertical', 5,5,player.getBoardSize());
     expect(player.placeShip(3,'vertical', 5,5,player.getBoardSize())).toBe("Loc Occupied Vertical [5,5]")
+})
+
+it('Place one ship on top of another ship horizontally', () => {
+    let player = gameObjects.gameBoard();
+    player.placeShip(3,'horizontal', 5,5,player.getBoardSize());
+    expect(player.placeShip(3,'horizontal', 5,5,player.getBoardSize())).toBe("Loc Occupied Horizontal [5,5]")
+})
+
+it('Place one ship crossing another ship vertically', () => {
+    let player = gameObjects.gameBoard();
+    player.placeShip(3,'horizontal', 5,5,player.getBoardSize());
+    expect(player.placeShip(3,'vertical', 6,3,player.getBoardSize())).toBe("Loc Occupied Vertical [6,5]")
+})
+
+it('Place one ship crossing another ship horizontally', () => {
+    let player = gameObjects.gameBoard();
+    player.placeShip(3,'vertical', 5,5,player.getBoardSize());
+    expect(player.placeShip(3,'horizontal', 3,7,player.getBoardSize())).toBe("Loc Occupied Horizontal [5,7]")
 })
