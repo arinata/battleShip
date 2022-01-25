@@ -79,7 +79,7 @@ const gameBoard = () => {
         let isHit = locNotOccup(shipLocation,loc);
         if(isHit==true){
             missedShot.push(loc);
-            return false;
+            return loc;
         }else{
             shipLocation[isHit].shipId.hit(loc);
             return true;

@@ -87,18 +87,39 @@ it('Hit a ship at the right position (2)', () => {
 it('Hit a ship at wrong position (1)', () => {
     let player = gameObjects.gameBoard();
     player.placeShip(3,'vertical', 3,2,player.getBoardSize());
-    expect(player.receiveAttack([5,5])).toBe(false);
+    expect(player.receiveAttack([5,5])).toStrictEqual([5,5]);
 })
 
 it('Hit a ship at wrong position (2)', () => {
     let player = gameObjects.gameBoard();
     player.placeShip(3,'horizontal', 7,7,player.getBoardSize());
-    expect(player.receiveAttack([1,1])).toBe(false);
+    expect(player.receiveAttack([1,1])).toStrictEqual([1,1]);
 })
 
 it('Hit a ship until it sunk', () => {
     let player = gameObjects.gameBoard();
     player.placeShip(3,'horizontal', 7,7,player.getBoardSize());
+    player.receiveAttack([7,7]);
+    player.receiveAttack([8,7]);
+    player.receiveAttack([9,7]);
+    expect(player.shipLocation[0].shipId.isSunk()).toBe(true);
+})
+
+it('Hit a ship 3 times, one of it wil be missed', () => {
+    let player = gameObjects.gameBoard();
+    player.placeShip(3,'horizontal', 7,7,player.getBoardSize());
+    player.receiveAttack([7,7]);
+    player.receiveAttack([8,5]);
+    player.receiveAttack([9,7]);
+    expect(player.shipLocation[0].shipId.isSunk()).toBe(false);
+})
+
+it('Hit a ship 6 times, shoot at same location twice', () => {
+    let player = gameObjects.gameBoard();
+    player.placeShip(3,'horizontal', 7,7,player.getBoardSize());
+    player.receiveAttack([7,7]);
+    player.receiveAttack([8,7]);
+    player.receiveAttack([9,7]);
     player.receiveAttack([7,7]);
     player.receiveAttack([8,7]);
     player.receiveAttack([9,7]);
