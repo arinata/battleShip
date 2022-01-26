@@ -101,5 +101,30 @@ const gameBoard = () => {
     return {placeShip,getBoardSize,receiveAttack,isAllSunk,shipLocation};
 }
 
+const Player1 = {board: gameBoard()}
+const Computer = {board: gameBoard(),
+                  attackList: [],
+                  freeLoc: createBoard(board.getBoardSize())    
+                }
+
+const computerAttack = (attackList,freeLoc) => {
+    let attackIndex = Math.floor(Math.random() * freeLoc.length);
+    let attackLoc = freeLoc[attackIndex];
+    attackList.push(attackLoc);
+    freeLoc.splice(attackIndex,1);
+    return attackLoc;
+}
+
+const createBoard = (boardSize) => {
+    let board = [];
+    let size = boardSize+1;
+    for(let i = 1; i<size; i++){
+        for(let j = 1; j<size; j++){
+            board.push([i,j]);
+        }
+    }
+    return board;
+}
+
 exports.ship = ship;
 exports.gameBoard = gameBoard;
