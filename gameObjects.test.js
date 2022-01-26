@@ -125,3 +125,65 @@ it('Hit a ship 6 times, shoot at same location twice', () => {
     player.receiveAttack([9,7]);
     expect(player.shipLocation[0].shipId.isSunk()).toBe(true);
 })
+
+it('Hit two ship, second ship must be sunk as well', () => {
+    let player = gameObjects.gameBoard();
+    player.placeShip(3,'horizontal', 7,7,player.getBoardSize());
+    player.placeShip(3,'horizontal', 7,2,player.getBoardSize());
+    player.receiveAttack([7,7]);
+    player.receiveAttack([8,7]);
+    player.receiveAttack([9,7]);
+    player.receiveAttack([7,2]);
+    player.receiveAttack([8,2]);
+    player.receiveAttack([9,2]);
+    expect(player.shipLocation[1].shipId.isSunk()).toBe(true);
+})
+
+it('Check wether all ships are sunk or not. Not all ships are sunk and no ship hitted', () => {
+    let player = gameObjects.gameBoard();
+    player.placeShip(3,'horizontal', 7,7,player.getBoardSize());
+    player.placeShip(3,'horizontal', 1,1,player.getBoardSize());
+    expect(player.isAllSunk()).toBe(false);
+})
+
+it('Check wether all ships are sunk or not. Not all ships are sunk and one ship has sunk', () => {
+    let player = gameObjects.gameBoard();
+    player.placeShip(3,'horizontal', 7,7,player.getBoardSize());
+    player.placeShip(3,'horizontal', 1,1,player.getBoardSize());
+    player.receiveAttack([7,7]);
+    player.receiveAttack([8,7]);
+    player.receiveAttack([9,7]);
+    expect(player.isAllSunk()).toBe(false);
+})
+
+it('Check wether all ships are sunk or not. Not all ships are sunk and one ship has sunk', () => {
+    let player = gameObjects.gameBoard();
+    player.placeShip(3,'horizontal', 5,7,player.getBoardSize());
+    player.placeShip(3,'horizontal', 3,1,player.getBoardSize());
+    player.receiveAttack([3,1]);
+    player.receiveAttack([4,1]);
+    player.receiveAttack([5,1]);
+    expect(player.isAllSunk()).toBe(false);
+})
+
+it('Check wether all ships are sunk or not. All ship have sunk', () => {
+    let player = gameObjects.gameBoard();
+    player.placeShip(3,'horizontal', 3,1,player.getBoardSize());
+    player.receiveAttack([3,1]);
+    player.receiveAttack([4,1]);
+    player.receiveAttack([5,1]);
+    expect(player.isAllSunk()).toBe(true);
+})
+
+it('Check wether all ships are sunk or not. All ship have sunk', () => {
+    let player = gameObjects.gameBoard();
+    player.placeShip(3,'horizontal', 3,1,player.getBoardSize());
+    player.placeShip(3,'horizontal', 7,7,player.getBoardSize());
+    player.receiveAttack([3,1]);
+    player.receiveAttack([4,1]);
+    player.receiveAttack([5,1]);
+    player.receiveAttack([7,7]);
+    player.receiveAttack([8,7]);
+    player.receiveAttack([9,7]);
+    expect(player.isAllSunk()).toBe(true);
+})

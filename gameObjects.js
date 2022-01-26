@@ -16,7 +16,10 @@ const ship = (length) => {
             return false;
         }
     }
-    return {hit,isSunk,partHitted};
+    const getPartHitted = () => {
+        return partHitted
+    }
+    return {hit,isSunk,getPartHitted};
 }
 
 const gameBoard = () => {
@@ -77,7 +80,7 @@ const gameBoard = () => {
     }
     const receiveAttack = (loc) => {
         let isHit = locNotOccup(shipLocation,loc);
-        if(isHit==true){
+        if(isHit===true){
             missedShot.push(loc);
             return loc;
         }else{
@@ -85,7 +88,17 @@ const gameBoard = () => {
             return true;
         }
     }
-    return {placeShip,getBoardSize,receiveAttack,shipLocation};
+
+    const isAllSunk = () => {
+        for(let i = 0; i<shipLocation.length; i++){
+            if(!shipLocation[i].shipId.isSunk()){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    return {placeShip,getBoardSize,receiveAttack,isAllSunk,shipLocation};
 }
 
 exports.ship = ship;
