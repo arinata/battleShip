@@ -1,0 +1,25 @@
+.contentArea{
+    display: flex;
+}
+.gameBoard {
+    background-color: whitesmoke;
+    display: grid;
+    grid-template-columns: 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px;
+    grid-template-rows: 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px;
+    height: 450px;
+    width: 450px;
+    border-style: solid;
+    border-color: black;
+    border-width: 5px;
+}
+
+.tiles {
+    background-color: whitesmoke;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+.tiles:hover{
+    background-color: rgb(200, 200, 200);
+}
