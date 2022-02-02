@@ -4,10 +4,10 @@
 .gameBoard {
     background-color: whitesmoke;
     display: grid;
-    grid-template-columns: 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px;
-    grid-template-rows: 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px;
-    height: 450px;
-    width: 450px;
+    grid-template-columns: 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px;
+    grid-template-rows: 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px;
+    height: 495px;
+    width: 495px;
     border-style: solid;
     border-color: black;
     border-width: 5px;
@@ -22,4 +22,18 @@
 
 .tiles:hover{
     background-color: rgb(200, 200, 200);
+}
+
+.tilesOccup {
+    background-color: rgb(75, 195, 224);
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+.tilesLabel {
+    background-color: rgb(124, 125, 126);
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
 }

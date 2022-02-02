@@ -32,7 +32,9 @@ Computer.board.placeShip(1,"vertical",6,9,boardSize);
 Computer.board.placeShip(1,"vertical",7,6,boardSize);
 Computer.board.placeShip(1,"vertical",8,4,boardSize);
 
+console.log(Computer.board.shipLocation);
+
 
 //Set up page visualization and layout
-buildGameBoard("player1","gameBoard1");
-buildGameBoard("cmputer","gameBoard2");
+buildGameBoard("player1","gameBoard1",Computer);
+buildGameBoard("cmputer","gameBoard2",Player1);
