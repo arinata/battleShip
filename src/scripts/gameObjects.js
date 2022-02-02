@@ -39,7 +39,7 @@ const gameBoard = () => {
                 }else{
                     for(let i = 0; i<shipLength; i++){
                         let tempLoc = [startCoordinateX+i, startCoordinateY];
-                        if(locNotOccup(shipLocation,tempLoc)==true){
+                        if(locNotOccup(tempLoc)==true){
                             loc.push(tempLoc);
                         }else{
                             return "Loc Occupied Horizontal ["+tempLoc+"]";
@@ -52,7 +52,7 @@ const gameBoard = () => {
                 }else{
                     for(let i = 0; i<shipLength; i++){
                         let tempLoc = [startCoordinateX, startCoordinateY+i];
-                        if(locNotOccup(shipLocation,tempLoc)==true){
+                        if(locNotOccup(tempLoc)==true){
                             loc.push(tempLoc);
                         }else{
                             return "Loc Occupied Vertical ["+tempLoc+"]";
@@ -67,7 +67,7 @@ const gameBoard = () => {
             return false;
         }
     }
-    const locNotOccup = (shipLocation,loc) =>{
+    const locNotOccup = (loc) =>{
         for(let i = 0; i<shipLocation.length; i++){
             for(let j = 0; j<shipLocation[i].location.length; j++){
                 if((shipLocation[i].location[j][0]==loc[0])&&(shipLocation[i].location[j][1]==loc[1])){
@@ -79,7 +79,7 @@ const gameBoard = () => {
         
     }
     const receiveAttack = (loc) => {
-        let isHit = locNotOccup(shipLocation,loc);
+        let isHit = locNotOccup(loc);
         if(isHit===true){
             missedShot.push(loc);
             return loc;
@@ -98,7 +98,7 @@ const gameBoard = () => {
         return true;
     }
 
-    return {placeShip,getBoardSize,receiveAttack,isAllSunk,shipLocation};
+    return {placeShip,getBoardSize,receiveAttack,isAllSunk,locNotOccup,shipLocation};
 }
 
 const createBoard = (boardSize) => {
@@ -132,5 +132,3 @@ exports.computerAttack = computerAttack;
 exports.createBoard = createBoard;
 exports.Player1 = Player1;
 exports.Computer = Computer;
-
-export {Player1,Computer,computerAttack,createBoard}
