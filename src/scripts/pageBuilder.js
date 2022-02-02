@@ -61,7 +61,9 @@ const buildGameBoard = (player, parentElmnt, playerBoard) => {
                 }
             }
             else {
-                if(playerBoard.board.locNotOccup(curLoc)==true){
+                // console.log(curLoc);
+                // console.log(playerBoard.board.locNotOccup(curLoc))
+                if(playerBoard.board.locNotOccup(curLoc)===true){
                     insertNewElement("div", player+"Tile"+(j-1)+(i-1), "tiles", "", parentElmnt);
                 }else{
                     insertNewElement("div", player+"Tile"+(j-1)+(i-1), "tilesOccup", "", parentElmnt);
