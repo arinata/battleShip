@@ -98,7 +98,7 @@ const gameBoard = () => {
         return true;
     }
 
-    return {placeShip,getBoardSize,receiveAttack,isAllSunk,locNotOccup,shipLocation};
+    return {placeShip,getBoardSize,receiveAttack,isAllSunk,locNotOccup,shipLocation,missedShot};
 }
 
 const createBoard = (boardSize) => {

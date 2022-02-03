@@ -22,6 +22,7 @@
 
 .tiles:hover{
     background-color: rgb(200, 200, 200);
+    cursor: pointer;
 }
 
 .tilesOccup {
@@ -31,9 +32,41 @@
     border-width: 1px;
 }
 
+.tilesOccup:hover {
+    background-color: rgb(25, 140, 145);
+    cursor:pointer;
+}
+
 .tilesLabel {
+    display: flex;
     background-color: rgb(124, 125, 126);
     border-style: solid;
     border-color: black;
     border-width: 2px;
+    justify-content: center;
+    align-items: center;
+}
+
+.missedHit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    cursor: auto;
+    color: red;
+    font-size: 40px;
+}
+
+.shipHit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    cursor: auto;
+    color: greenyellow;
+    font-size: 40px;
 }

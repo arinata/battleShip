@@ -68,6 +68,17 @@ const buildGameBoard = (player, parentElmnt, playerBoard) => {
                 }else{
                     insertNewElement("div", player+"Tile"+(j-1)+(i-1), "tilesOccup", "", parentElmnt);
                 }
+                document.getElementById(player+"Tile"+(j-1)+(i-1)).addEventListener('click',function(){
+                    let tile = document.getElementById(player+"Tile"+(j-1)+(i-1));
+                    if((tile.classList == "tiles")||(tile.classList == "tilesOccup")){
+                        let hitStat = playerBoard.board.receiveAttack(curLoc);
+                        if(hitStat===true){
+                            tile.classList = "shipHit fas fa-times";
+                        }else{
+                            tile.classList = "missedHit fas fa-times";
+                        }
+                    }
+                })
             }
         }
     }
