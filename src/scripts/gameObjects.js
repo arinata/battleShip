@@ -23,9 +23,17 @@ const ship = (length) => {
 }
 
 const gameBoard = () => {
-    const shipLocation = [];
+    var shipLocation = [];
     const boardSize = 10;
-    const missedShot = [];
+    var missedShot = [];
+    var turn = false;
+    const isTurn = () => {
+        return turn;
+    }
+    const setTurn = () => {
+        turn = turn ? false : true;
+        return turn;
+    }
     const getBoardSize = () => {
         return boardSize;
     }
@@ -98,7 +106,7 @@ const gameBoard = () => {
         return true;
     }
 
-    return {placeShip,getBoardSize,receiveAttack,isAllSunk,locNotOccup,shipLocation,missedShot};
+    return {isTurn,setTurn,placeShip,getBoardSize,receiveAttack,isAllSunk,locNotOccup,shipLocation,missedShot};
 }
 
 const createBoard = (boardSize) => {

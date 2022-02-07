@@ -32,9 +32,8 @@ Computer.board.placeShip(1,"vertical",6,8,boardSize);
 Computer.board.placeShip(1,"vertical",7,5,boardSize);
 Computer.board.placeShip(1,"vertical",8,7,boardSize);
 
-console.log(Player1.board.shipLocation);
-
 
 //Set up page visualization and layout
-buildGameBoard("player1","gameBoard1",Computer);
-buildGameBoard("cmputer","gameBoard2",Player1);
+buildGameBoard("player1","gameBoard1",Player1,Computer);
+buildGameBoard("cmputer","gameBoard2",Computer,Player1);
+Player1.board.setTurn();

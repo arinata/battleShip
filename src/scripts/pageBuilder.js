@@ -8,7 +8,7 @@ const insertNewElement = (elmntType,elmntId,elmntClass,text,parentElmnt) => {
     document.getElementById(parentElmnt).appendChild(newElmnt);
 }
 
-const buildGameBoard = (player, parentElmnt, playerBoard) => {
+const buildGameBoard = (player, parentElmnt, playerBoard, opponentBoard) => {
     for(let i = 0; i<11; i++){
         for(let j = 0; j<11; j++){
             let curLoc = [j,i];
@@ -61,22 +61,26 @@ const buildGameBoard = (player, parentElmnt, playerBoard) => {
                 }
             }
             else {
-                // console.log(curLoc);
-                // console.log(playerBoard.board.locNotOccup(curLoc))
                 if(playerBoard.board.locNotOccup(curLoc)===true){
                     insertNewElement("div", player+"Tile"+(j-1)+(i-1), "tiles", "", parentElmnt);
                 }else{
                     insertNewElement("div", player+"Tile"+(j-1)+(i-1), "tilesOccup", "", parentElmnt);
                 }
                 document.getElementById(player+"Tile"+(j-1)+(i-1)).addEventListener('click',function(){
-                    let tile = document.getElementById(player+"Tile"+(j-1)+(i-1));
-                    if((tile.classList == "tiles")||(tile.classList == "tilesOccup")){
-                        let hitStat = playerBoard.board.receiveAttack(curLoc);
-                        if(hitStat===true){
-                            tile.classList = "shipHit fas fa-times";
-                        }else{
-                            tile.classList = "missedHit fas fa-times";
+                    if(playerBoard.board.isTurn()){
+                        let tile = document.getElementById(player+"Tile"+(j-1)+(i-1));
+                        if((tile.classList == "tiles")||(tile.classList == "tilesOccup")){
+                            let hitStat = playerBoard.board.receiveAttack(curLoc);
+                            if(hitStat===true){
+                                tile.classList = "shipHit fas fa-times";
+                            }else{
+                                tile.classList = "missedHit fas fa-times";
+                            }
                         }
+                        playerBoard.board.setTurn();
+                        opponentBoard.board.setTurn();
+                    }else{
+
                     }
                 })
             }
