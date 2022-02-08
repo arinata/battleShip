@@ -66,10 +66,24 @@ it('Place one ship crossing another ship vertically', () => {
     expect(player.placeShip(3,'vertical', 6,3,player.getBoardSize())).toBe("Loc Occupied Vertical [6,5]")
 })
 
-it('Place one ship crossing another ship horizontally', () => {
+it('Place one ship crossing another ship horizontally (1)', () => {
     let player = gameObjects.gameBoard();
     player.placeShip(3,'vertical', 5,5,player.getBoardSize());
     expect(player.placeShip(3,'horizontal', 3,7,player.getBoardSize())).toBe("Loc Occupied Horizontal [5,7]")
+})
+
+it('Place one ship crossing another ship horizontally(2)', () => {
+    let player = gameObjects.gameBoard();
+    player.placeShip(1,'horizontal', 4,6,player.getBoardSize());
+    player.placeShip(1,'horizontal', 8,3,player.getBoardSize());
+    player.placeShip(1,'horizontal', 6,8,player.getBoardSize());
+    player.placeShip(1,'horizontal', 8,8,player.getBoardSize());
+    player.placeShip(2,'horizontal', 5,1,player.getBoardSize());
+    player.placeShip(2,'horizontal', 1,2,player.getBoardSize());
+    player.placeShip(2,'horizontal', 6,2,player.getBoardSize());
+    player.placeShip(3,'horizontal', 4,9,player.getBoardSize());
+    player.placeShip(3,'horizontal', 8,6,player.getBoardSize());
+    expect(player.placeShip(4,'horizontal', 5,3,player.getBoardSize())).toBe("Loc Occupied Horizontal [8,3]")
 })
 
 it('Hit a ship at the right position (1)', () => {

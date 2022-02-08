@@ -21,16 +21,17 @@ Player1.board.placeShip(3,"vertical",3,7,boardSize);
 Player1.board.placeShip(3,"vertical",10,3,boardSize);
 Player1.board.placeShip(4,"horizontal",2,5,boardSize);
 
-Computer.board.placeShip(4,"vertical",1,1,boardSize);
-Computer.board.placeShip(3,"horizontal",2,6,boardSize);
-Computer.board.placeShip(3,"horizontal",8,9,boardSize);
-Computer.board.placeShip(2,"horizontal",3,3,boardSize);
-Computer.board.placeShip(2,"vertical",4,8,boardSize);
-Computer.board.placeShip(2,"vertical",8,2,boardSize);
-Computer.board.placeShip(1,"vertical",6,2,boardSize);
-Computer.board.placeShip(1,"vertical",6,8,boardSize);
-Computer.board.placeShip(1,"vertical",7,5,boardSize);
-Computer.board.placeShip(1,"vertical",8,7,boardSize);
+// Computer.board.placeShip(4,"vertical",1,1,boardSize);
+// Computer.board.placeShip(3,"horizontal",2,6,boardSize);
+// Computer.board.placeShip(3,"horizontal",8,9,boardSize);
+// Computer.board.placeShip(2,"horizontal",3,3,boardSize);
+// Computer.board.placeShip(2,"vertical",4,8,boardSize);
+// Computer.board.placeShip(2,"vertical",8,2,boardSize);
+// Computer.board.placeShip(1,"vertical",6,2,boardSize);
+// Computer.board.placeShip(1,"vertical",6,8,boardSize);
+// Computer.board.placeShip(1,"vertical",7,5,boardSize);
+// Computer.board.placeShip(1,"vertical",8,7,boardSize);
+Computer.board.placeCompShip();
 
 
 //Set up page visualization and layout

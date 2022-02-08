@@ -47,7 +47,7 @@ const gameBoard = () => {
                 }else{
                     for(let i = 0; i<shipLength; i++){
                         let tempLoc = [startCoordinateX+i, startCoordinateY];
-                        if(locNotOccup(tempLoc)==true){
+                        if(locNotOccup(tempLoc)===true){
                             loc.push(tempLoc);
                         }else{
                             return "Loc Occupied Horizontal ["+tempLoc+"]";
@@ -60,7 +60,7 @@ const gameBoard = () => {
                 }else{
                     for(let i = 0; i<shipLength; i++){
                         let tempLoc = [startCoordinateX, startCoordinateY+i];
-                        if(locNotOccup(tempLoc)==true){
+                        if(locNotOccup(tempLoc)===true){
                             loc.push(tempLoc);
                         }else{
                             return "Loc Occupied Vertical ["+tempLoc+"]";
@@ -106,7 +106,20 @@ const gameBoard = () => {
         return true;
     }
 
-    return {isTurn,setTurn,placeShip,getBoardSize,receiveAttack,isAllSunk,locNotOccup,shipLocation,missedShot};
+    const placeCompShip = () => {
+        let shipList = [1, 1, 1, 1, 2, 2, 2, 3, 3, 4];
+        for(let i = 0; i<shipList.length; i++){
+            let x = Math.floor(Math.random()*10+1);
+            let y = Math.floor(Math.random()*10+1);
+            let placed = placeShip(shipList[i],"horizontal",x,y,boardSize);
+            console.log("urutan: "+i+"||X: "+x+"||Y: "+y+"||overlap: "+placed);
+            if(placed!=true){
+                i--;
+            }
+        }
+    }
+
+    return {isTurn,setTurn,placeShip,getBoardSize,receiveAttack,isAllSunk,locNotOccup,placeCompShip,shipLocation,missedShot};
 }
 
 const createBoard = (boardSize) => {
