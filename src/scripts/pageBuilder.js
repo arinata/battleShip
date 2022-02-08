@@ -77,8 +77,14 @@ const buildGameBoard = (player, parentElmnt, playerBoard, opponentBoard) => {
                                 tile.classList = "missedHit fas fa-times";
                             }
                         }
+                        //set turn for the other player
                         playerBoard.board.setTurn();
-                        opponentBoard.board.setTurn();
+                        //check if game is finished
+                        if(playerBoard.board.isAllSunk()){
+
+                        }else{
+                            opponentBoard.board.setTurn();
+                        }
                     }else{
 
                     }
